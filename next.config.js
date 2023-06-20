@@ -5,6 +5,10 @@ const nextConfig = {
   images: {
     domains: ["lh3.googleusercontent.com", "vercel.com"],
   },
+  i18n: {
+    locales: ['en', 'ja'],
+    defaultLocale: 'ja',
+  },
   async redirects() {
     return [
       {
