@@ -5,6 +5,12 @@ import { sfPro, inter } from "./fonts";
 import Nav from "@/components/layout/nav";
 import Footer from "@/components/layout/footer";
 import { Suspense } from "react";
+import { defaultLocale, languages } from '../i18n/config'
+import { CounterContextProvider } from "../context/app.context";
+
+export async function generateStaticParams() {
+  return languages.map((lang) => ({ lang }))
+}
 
 export const metadata = {
   title: "Precedent - Building blocks for your Next.js project",
@@ -23,22 +29,31 @@ export const metadata = {
 
 export default async function RootLayout({
   children,
+  params: {
+    lang
+  }
 }: {
   children: React.ReactNode;
+  params:{
+    lang:string
+  }
 }) {
+  console.log(lang)
   return (
-    <html lang="en">
+    <html lang={lang}>
       <body className={cx(sfPro.variable, inter.variable)}>
-        <div className="fixed h-screen w-full bg-gradient-to-br from-indigo-50 via-white to-cyan-100" />
-        <Suspense fallback="...">
-          {/* @ts-expect-error Server Component */}
-          <Nav />
-        </Suspense>
-        <main className="flex min-h-screen w-full flex-col items-center justify-center py-32">
-          {children}
-        </main>
-        <Footer />
-        <Analytics />
+        <CounterContextProvider>
+          <div className="fixed h-screen w-full bg-gradient-to-br from-indigo-50 via-white to-cyan-100" />
+          <Suspense fallback="...">
+            {/* @ts-expect-error Server Component */}
+            <Nav/>
+          </Suspense>
+          <main className="flex min-h-screen w-full flex-col items-center justify-center py-32">
+            {children}
+          </main>
+          <Footer />
+          <Analytics />
+          </CounterContextProvider>
       </body>
     </html>
   );

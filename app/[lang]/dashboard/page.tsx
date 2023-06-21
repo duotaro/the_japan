@@ -6,8 +6,18 @@ import WebVitals from "@/components/home/web-vitals";
 import ComponentGrid from "@/components/home/component-grid";
 import Image from "next/image";
 import { nFormatter } from "@/lib/utils";
+import { getLocales } from "../../i18n";
+//import { useAppContext, SET_LOCALE } from '../../context/app.context';
 
-export default async function Home() {
+export default async function Dashboard({ params: { lang } }:{
+  params:{
+    lang:string
+  }
+}) {
+  const dict = await getLocales(lang)
+  // ユーザー情報取得
+  // sessionを持てるのはclient componentのみなので、持ちたい部分はcomponenntディレクトリに外出しする感じかな
+
   const { stargazers_count: stars } = await fetch(
     "https://api.github.com/repos/steven-tey/precedent",
     {
@@ -35,7 +45,7 @@ export default async function Home() {
         >
           <Twitter className="h-5 w-5 text-[#1d9bf0]" />
           <p className="text-sm font-semibold text-[#1d9bf0]">
-            Introducing Precedent
+            {dict.meta.mainTitle}
           </p>
         </a>
         <h1

@@ -6,9 +6,10 @@ const nextConfig = {
     domains: ["lh3.googleusercontent.com", "vercel.com"],
   },
   i18n: {
-    locales: ['en', 'ja'],
-    defaultLocale: 'ja',
+    locales: ['en', 'ja', 'es', 'zh-CN'],
+    defaultLocale: 'en'
   },
+  trailingSlash: true,
   async redirects() {
     return [
       {
