@@ -43,7 +43,7 @@ export default async function LangHome({ params: { lang } }:{
         >
           <Twitter className="h-5 w-5 text-[#1d9bf0]" />
           <p className="text-sm font-semibold text-[#1d9bf0]">
-            {dict.meta.mainTitle}
+            {dict.meta.mainTitle} / {dict.meta.mainDescription}
           </p>
         </a>
         <h1

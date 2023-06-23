@@ -1,5 +1,13 @@
 {
-    "meta": {
-      "mainTitle": "日本"
-    }
+	"meta": {
+		"mainTitle": "Japan",
+		"mainDescription": "これはあれです",
+		"title1": "タイトル１",
+		"title2": "タイトル2"
+	},
+	"test": {
+		"test1": "テスト1",
+		"test2": "いい天気ですね",
+		"test3": "あれはクッパですか？"
+	}
 }

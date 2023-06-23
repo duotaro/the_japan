@@ -38,10 +38,9 @@ export default async function RootLayout({
     lang:string
   }
 }) {
-  console.log(lang)
   return (
     <html lang={lang}>
-      <body className={cx(sfPro.variable, inter.variable)}>
+      <body className={cx(sfPro.variable, inter.variable)} id="main-body">
         <CounterContextProvider>
           <div className="fixed h-screen w-full bg-gradient-to-br from-indigo-50 via-white to-cyan-100" />
           <Suspense fallback="...">
